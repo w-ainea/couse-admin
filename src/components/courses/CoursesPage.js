@@ -53,7 +53,7 @@ const mapStateToProps = (state) => ({
 
 // determines which actions are available on props in our component
 const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(courseActions, dispatch)
-})
+  actions: bindActionCreators(courseActions, dispatch),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);
