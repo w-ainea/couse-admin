@@ -5,6 +5,9 @@ import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 
 class CoursesPage extends React.Component {
+  componentDidMount() {
+    this.props.actions.loadCourses().catch((err) => alert(err));
+  }
   render() {
     return (
       <>
