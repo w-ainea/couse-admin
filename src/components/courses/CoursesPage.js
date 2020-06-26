@@ -8,15 +8,23 @@ import CourseList from "./CourseList";
 
 class CoursesPage extends React.Component {
   componentDidMount() {
-    this.props.actions.loadCourses().catch((err) => alert(err));
+    const { courses, actions, authors } = this.props;
 
-    this.props.actions.loadAuthors().catch((err) => alert(err));
+    if (courses.length === 0) {
+      actions.loadCourses().catch((err) => alert(err));
+    }
+
+    if (authors.length === 0) {
+      actions.loadAuthors().catch((err) => alert(err));
+    }
   }
   render() {
+    const { courses } = this.props;
+
     return (
       <>
         <h2>Courses</h2>
-        <CourseList courses={this.props.courses} />
+        <CourseList courses={courses} />
       </>
     );
   }
@@ -24,6 +32,7 @@ class CoursesPage extends React.Component {
 
 CoursesPage.propTypes = {
   courses: PropTypes.array.isRequired,
+  authors: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
 };
 
