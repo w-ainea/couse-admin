@@ -6,9 +6,14 @@ import PropTypes from "prop-types";
 import { newCourse } from "../../../tools/mockData";
 import CourseForm from "./CourseForm";
 
-function ManageCoursePage({ courses, authors, loadCourses, loadAuthors }) {
+function ManageCoursePage({
+  courses,
+  authors,
+  loadCourses,
+  loadAuthors,
+  ...props
+}) {
   const [course, setCourse] = useState({ ...props.course });
-
   useEffect(() => {
     if (courses.length === 0) {
       loadCourses().catch((err) => alert(err));
